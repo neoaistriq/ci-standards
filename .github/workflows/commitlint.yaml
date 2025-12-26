@@ -2,6 +2,9 @@ name: Commit Message Lint
 
 on:
   workflow_call:
+    secrets:
+      CI_STANDARDS_TOKEN:
+        required: true 
 
 jobs:
   commitlint:
