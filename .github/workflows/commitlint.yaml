@@ -24,9 +24,10 @@ jobs:
           token: ${{ secrets.CI_STANDARDS_TOKEN }}  #PAT token received from consumer repo for read acess to ci-standards on runner
           path: ci-standards
           ref: main
-          fetch-depth: 1        
-          #persist-credentials: false  # do not try to use PAT for write operation
           fetch-tags: false
+          fetch-depth: 1        
+          persist-credentials: false  # do not try to use PAT for write operation
+          
 
       # Setup Node
       - uses: actions/setup-node@v4
