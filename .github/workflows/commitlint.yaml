@@ -17,7 +17,7 @@ jobs:
         with:
           repository: org/ci-standards
           path: ci-standards
-          ref: v2   # Tag for stability
+          ref: v3.0   # Tag for stability
 
       # Setup Node
       - uses: actions/setup-node@v4
