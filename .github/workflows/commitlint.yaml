@@ -18,7 +18,7 @@ jobs:
 
       - name: Manual clone ci-standards
         run: |
-          git clone --depth 1 --single-branch --branch ranjan-2 https://x-access-token:${{ secrets.CI_STANDARDS_TOKEN }}@github.com/neoaistriq/ci-standards.git ci-standards
+          git clone --depth 1 --single-branch --branch feature/ranjan-2 https://x-access-token:${{ secrets.CI_STANDARDS_TOKEN }}@github.com/neoaistriq/ci-standards.git ci-standards
           
       # Setup Node
       - uses: actions/setup-node@v4
