@@ -15,9 +15,9 @@ jobs:
       - name: Checkout ci-standards
         uses: actions/checkout@v4
         with:
-          repository: org/ci-standards
+          repository: neoaistriq/ci-standards
           path: ci-standards
-          ref: v3.0   # Tag for stability
+          ref: v3.1.0   # Tag for stability
 
       # Setup Node
       - uses: actions/setup-node@v4
