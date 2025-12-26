@@ -23,7 +23,7 @@ jobs:
           repository: neoaistriq/ci-standards
           token: ${{ secrets.CI_STANDARDS_TOKEN }}  #PAT token received from consumer repo for read acess to ci-standards on runner
           path: ci-standards
-          ref: v3.1.7   # Tag for stability
+          ref: main
           fetch-depth: 1        
           persist-credentials: false  # do not try to use PAT for write operation
           fetch-tags: false
