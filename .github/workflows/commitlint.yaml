@@ -25,7 +25,7 @@ jobs:
           path: ci-standards
           ref: main
           fetch-depth: 1        
-          persist-credentials: false  # do not try to use PAT for write operation
+          #persist-credentials: false  # do not try to use PAT for write operation
           fetch-tags: false
 
       # Setup Node
