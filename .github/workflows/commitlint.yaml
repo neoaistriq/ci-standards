@@ -1,0 +1,19 @@
+# .github/workflows/commitlint.yml
+name: Commit Message Lint
+
+on:
+  workflow_call:
+
+jobs:
+  commitlint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - run: npm ci
+
+      - run: npx commitlint --from=HEAD~1 --to=HEAD
