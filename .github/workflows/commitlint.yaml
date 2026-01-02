@@ -4,6 +4,8 @@ on:
   workflow_call:
     secrets:
       CI_STANDARDS_TOKEN:
+        required: false 
+      CI_STANDARDS_TOKEN_RW:
         required: true 
 
 jobs:
@@ -14,12 +16,20 @@ jobs:
       - name: Checkout consumer repo
         uses: actions/checkout@v4
         with:
-          fetch-depth: 2   
+          fetch-depth: 2
 
-      - name: Manual clone ci-standards
-        run: |
-          git clone --depth 1 --single-branch --branch feature/ranjan-2 https://x-access-token:${{ secrets.CI_STANDARDS_TOKEN }}@github.com/neoaistriq/ci-standards.git ci-standards
-          
+      # Checkout the central ci-standards repo to access config & package.json
+      - name: Checkout ci-standards
+        uses: actions/checkout@v4
+        with:
+          repository: neoaistriq/ci-standards
+          token: ${{ secrets.CI_STANDARDS_TOKEN_RW }}  #PAT token received from consumer repo for read acess to ci-standards on runner
+          path: ci-standards
+          ref: v3.1.8   # Tag for stability
+          fetch-depth: 1        
+          #persist-credentials: false  # do not try to use PAT for write operation
+          #tags: false
+
       # Setup Node
       - uses: actions/setup-node@v4
         with:
