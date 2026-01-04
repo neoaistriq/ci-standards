@@ -4,11 +4,12 @@ module.exports = {
 
   parserPreset: {
     parserOpts: {
-      // conventional commit header:
+      // Strict conventional commit header:
       // type(scope): [JIRA-123] subject
       //   - no space before colon
       //   - exactly ONE space after colon
-      headerPattern: /^(\w+)\(([^)]+)\):\s(.+)$/,
+      //   - subject must start with JIRA ticket
+      headerPattern: /^(\w+)\(([^)]+)\):\s(\[[A-Z][A-Z0-9]+-\d+\].+)$/,
       headerCorrespondence: ['type', 'scope', 'subject']
     }
   },
@@ -39,13 +40,6 @@ module.exports = {
 
     // ---- Subject rules ----
     'subject-empty': [2, 'never'],
-
-    // Enforce JIRA ticket at start of subject
-    'subject-pattern': [
-      2,
-      'always',
-      '^\\[[A-Z][A-Z0-9]+-\\d+\\]'
-    ],
 
     // ---- Header rules ----
     'header-max-length': [2, 'always', 72],
