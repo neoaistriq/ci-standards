@@ -2,6 +2,14 @@
 module.exports = {
   extends: ['@commitlint/config-conventional'],
 
+  parserPreset: {
+    parserOpts: {
+      // Allow optional space before colon: type(scope) : subject
+      headerPattern: /^(\w+)\(([^)]+)\)\s?:\s(.+)$/,
+      headerCorrespondence: ['type', 'scope', 'subject']
+    }
+  },
+
   rules: {
     // ---- Type rules ----
     'type-enum': [
@@ -23,13 +31,21 @@ module.exports = {
     ],
 
     // ---- Scope rules ----
+    'scope-empty': [2, 'never'],
     'scope-case': [2, 'always', 'kebab-case'],
-    'scope-empty': [1, 'never'],
 
     // ---- Subject rules ----
     'subject-empty': [2, 'never'],
-    //'subject-full-stop': [2, 'never', '.'],
-    'subject-case': [2, 'never', ['sentence-case', 'start-case', 'pascal-case']],
+
+    // Require JIRA ticket at the start of the subject
+    'subject-pattern': [
+      2,
+      'always',
+      '^\\[[A-Z][A-Z0-9]+-\\d+\\]'
+    ],
+
+    'subject-pattern-error-message':
+      'Subject must start with a JIRA ticket like [ABC-123]',
 
     // ---- Header rules ----
     'header-max-length': [2, 'always', 72],
